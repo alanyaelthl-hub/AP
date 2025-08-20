@@ -1,10 +1,50 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     background-color: #f8f9fa; /* Light gray from Bootstrap palette */
+    padding-bottom: 5rem;
 }
 
 .display-4 {
-font-family: 'Georgia', serif; / Un ejemplo de una fuente diferente si la quisieras */
+font-family: 'Georgia', serif;
+}
+
+.navbar.bg-primary.bg-opacity-70 {
+    background-color: rgba(13, 110, 253, 0.7) !important;
+    backdrop-filter: blur(2px);
+}
+
+.navbar-brand {
+    font-family: BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+}
+
+#carrito-contenido {
+    min-height: 80px;
+}
+
+#carrito-contenido .producto-cantidad {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+#carrito-contenido .producto-precio {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+#carrito-contenido .total {
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-top: 1px solid #eee;
+    margin-top: 1rem;
+    padding-top: 0.5rem;
+}
+
+#carrito-contenido .vacio {
+    color: #bbb;
+    text-align: center;
+    font-size: 1.1rem;
+    font-style: italic;
+    margin: 2rem 0;
 }
 
 .card-img-top {
@@ -14,3 +54,5 @@ font-family: 'Georgia', serif; / Un ejemplo de una fuente diferente si la quisie
     background: #fff;
 }
 /* Any custom styles not covered by Bootstrap go here */
+
+

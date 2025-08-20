@@ -1,6 +1,10 @@
+// Agrega esto al inicio del archivo, después de la declaración de 'data'
+let carrito = [];
+
+// ...existing code...
 document.addEventListener('DOMContentLoaded', () => {
     const productGrid = document.getElementById('product-grid');
-    data.forEach(perfume => {
+    data.forEach((perfume, perfumeIndex) => {
         const productCard = document.createElement('div');
         productCard.classList.add('col'); // Bootstrap column class
 
@@ -17,25 +21,162 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="card-body text-center">
                     <small class="text-muted">${perfume.brand}</small>
                     <h5 class="card-title mt-2">${perfume.name}</h5>
-                    <hr>
-                    <div class="d-flex flex-column align-items-center gap-2">
-                        <div>
-                            <span class="badge bg-primary fs-6">3ml</span>
-                            <span class="fw-bold text-dark fs-5 ms-2">$${perfume.prices['3ml']} MXN</span>
-                        </div>
-                        <div>
-                            <span class="badge bg-success fs-6">5ml</span>
-                            <span class="fw-bold text-dark fs-5 ms-2">$${perfume.prices['5ml']} MXN</span>
-                        </div>
+                    <div class="my-3 d-flex justify-content-center align-items-center gap-2">
+                        <span class="badge bg-primary fs-6">3ml</span>
+                        <span class="fw-bold text-primary fs-5">$${perfume.prices['3ml']} MXN</span>
+                        <button class="btn btn-outline-primary btn-sm ms-2 add-to-cart" data-index="${perfumeIndex}" data-size="3ml" title="Agregar 3ml al carrito">
+                            <i class="bi bi-cart-plus"></i>
+                        </button>
                     </div>
+                    <div class="mb-2 d-flex justify-content-center align-items-center gap-2">
+                        <span class="badge bg-success fs-6">5ml</span>
+                        <span class="fw-bold text-success fs-5">$${perfume.prices['5ml']} MXN</span>
+                        <button class="btn btn-outline-success btn-sm ms-2 add-to-cart" data-index="${perfumeIndex}" data-size="5ml" title="Agregar 5ml al carrito">
+                            <i class="bi bi-cart-plus"></i>
+                        </button>
+                    </div>
+                    <hr>
                 </div>
             </div>
         `;
-        
+
         // Append the card to the product grid
         productGrid.appendChild(productCard);
     });
+
+    // Delegación de eventos para los botones de agregar al carrito
+    document.querySelectorAll('.add-to-cart').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const perfumeIndex = this.getAttribute('data-index');
+            const size = this.getAttribute('data-size');
+            const perfume = data[perfumeIndex];
+
+            // Agregar al carrito
+            carrito.push({
+                name: perfume.name,
+                brand: perfume.brand,
+                size: size,
+                price: perfume.prices[size]
+            });
+            console.log(carrito);
+            // Mostrar mensaje con SweetAlert2
+            Swal.fire(`${perfume.name} (${size}) fue agregado a su carrito`);
+        });
+    });
+
+    // Mostrar modal al hacer click en el botón de carrito
+    document.getElementById('btn-ver-carrito').addEventListener('click', () => {
+        actualizarModalCarrito();
+        const modal = new bootstrap.Modal(document.getElementById('modalCarrito'));
+        modal.show();
+    });
+
+    // Copiar pedido al portapapeles
+    document.getElementById('btn-copiar-pedido').addEventListener('click', () => {
+        const resumen = generarResumenPedido();
+        navigator.clipboard.writeText(resumen).then(() => {
+            Swal.fire('¡Pedido copiado!', '', 'success');
+        });
+    });
+
+    // Habilita el botón solo si el check está marcado
+    const checkConfirmar = document.getElementById('confirmarPedido');
+    const btnCopiar = document.getElementById('btn-copiar-pedido');
+    if (checkConfirmar && btnCopiar) {
+        btnCopiar.disabled = true; // Deshabilitado por defecto
+        checkConfirmar.addEventListener('change', function() {
+            btnCopiar.disabled = !this.checked;
+        });
+    }
 });
+
+function actualizarModalCarrito() {
+    const contenedor = document.getElementById('carrito-contenido');
+    const btnCopiar = document.getElementById('btn-copiar-pedido');
+    const checkConfirmar = document.getElementById('confirmarPedido');
+
+    // Siempre deshabilita el botón y desmarca el check al abrir el modal
+    if (btnCopiar) btnCopiar.disabled = true;
+    if (checkConfirmar) checkConfirmar.checked = false;
+
+    if (carrito.length === 0) {
+        contenedor.innerHTML = `<div class="vacio">Aun no has agregado nungun perfume</div>`;
+        if (btnCopiar) btnCopiar.disabled = true;
+        if (checkConfirmar) checkConfirmar.disabled = true;
+        return;
+    }
+    if (btnCopiar) btnCopiar.disabled = true;
+    if (checkConfirmar) checkConfirmar.disabled = false;
+
+    // Agrupar por nombre, tamaño y precio
+    const agrupados = {};
+    carrito.forEach(item => {
+        const key = `${item.name}|${item.size}|${item.price}`;
+        if (!agrupados[key]) {
+            agrupados[key] = { ...item, cantidad: 1 };
+        } else {
+            agrupados[key].cantidad += 1;
+        }
+    });
+
+    let total = 0;
+    let html = `<ul class="list-group mb-3">`;
+    Object.values(agrupados).forEach(prod => {
+        const subtotal = prod.price * prod.cantidad;
+        total += subtotal;
+        html += `
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                    <span class="fw-bold">${prod.name}</span>
+                    <span class="badge bg-secondary ms-2">${prod.size}</span>
+                    <span class="text-muted ms-2">${prod.brand}</span>
+                </div>
+                <div>
+                    <span class="producto-cantidad">${prod.cantidad} x </span>
+                    <span class="producto-precio">$${prod.price} MXN</span>
+                    <span class="fw-bold ms-2">= $${subtotal} MXN</span>
+                </div>
+            </li>
+        `;
+    });
+    html += `</ul>
+        <div class="total text-end">Total: $${total} MXN</div>
+    `;
+    contenedor.innerHTML = html;
+
+    // Asigna el evento cada vez que se actualiza el modal
+    if (checkConfirmar && btnCopiar) {
+        checkConfirmar.onchange = function() {
+            btnCopiar.disabled = !this.checked;
+        };
+    }
+}
+
+// Genera el resumen de pedido para copiar
+function generarResumenPedido() {
+    if (carrito.length === 0) return "Aun no has agregado nungun perfume";
+    const agrupados = {};
+    carrito.forEach(item => {
+        const key = `${item.name}|${item.size}|${item.price}`;
+        if (!agrupados[key]) {
+            agrupados[key] = { ...item, cantidad: 1 };
+        } else {
+            agrupados[key].cantidad += 1;
+        }
+    });
+    let total = 0;
+    let resumen = "Pedido AP:\n";
+    Object.values(agrupados).forEach(prod => {
+        const subtotal = prod.price * prod.cantidad;
+        total += subtotal;
+        resumen += `${prod.name} (${prod.size}, ${prod.brand}) x${prod.cantidad}: $${subtotal} MXN\n`;
+    });
+    resumen += `Total: $${total} MXN\n`;
+    resumen += "¡Listo!, confirmo mi pedido";
+    return resumen;
+}
+
+
 
 var data = [
 {

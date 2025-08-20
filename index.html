@@ -8,12 +8,50 @@
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
         rel="stylesheet"
         />
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
-        <header class="text-center py-5 bg-light mb-4 border-bottom">
+<!-- ...existing code... -->
+<body>
+    <!-- NAVBAR FIJO -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary bg-opacity-70 fixed-top shadow-sm">
         <div class="container">
-            <h1 class="display-4 fw-bold text-dark">AP</h1>
+            <span class="navbar-brand mx-auto fw-bold fs-3">AP</span>
+            <button id="btn-ver-carrito" class="btn btn-outline-light position-absolute end-0 me-3" title="Ver carrito">
+                <i class="bi bi-cart3 fs-4"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MODAL CARRITO -->
+    <div class="modal fade" id="modalCarrito" tabindex="-1" aria-labelledby="modalCarritoLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalCarritoLabel">Tu pedido</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body">
+            <div id="carrito-contenido"></div>
+            <div class="form-check mt-4">
+              <input class="form-check-input" type="checkbox" value="" id="confirmarPedido">
+              <label class="form-check-label" for="confirmarPedido">
+                ¡Listo!, confirmo mi pedido
+              </label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" id="btn-copiar-pedido">Copiar pedido</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ...resto del código... -->
+        <header class="text-center py-5 bg-light mb-2 mt-5 border-bottom">
+        <div class="container">
             <p class="lead text-muted">Prueba diferentes aromas y encuentra tu perfume ideal.</p>
         </div>
         </header>
