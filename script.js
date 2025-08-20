@@ -100,7 +100,7 @@ function actualizarModalCarrito() {
     if (checkConfirmar) checkConfirmar.checked = false;
 
     if (carrito.length === 0) {
-        contenedor.innerHTML = `<div class="vacio">Aun no has agregado nungun perfume</div>`;
+        contenedor.innerHTML = `<div class="vacio">Aun no has agregado ningun perfume</div>`;
         if (btnCopiar) btnCopiar.disabled = true;
         if (checkConfirmar) checkConfirmar.disabled = true;
         return;

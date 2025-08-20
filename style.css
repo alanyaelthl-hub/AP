@@ -9,7 +9,7 @@ font-family: 'Georgia', serif;
 }
 
 .navbar.bg-primary.bg-opacity-70 {
-    background-color: rgba(13, 110, 253, 0.7) !important;
+    background-color: #29a9e39e !important;
     backdrop-filter: blur(2px);
 }
 
