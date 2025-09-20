@@ -18,7 +18,7 @@
     <!-- NAVBAR FIJO -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary bg-opacity-70 fixed-top shadow-sm">
         <div class="container">
-            <span class="navbar-brand mx-auto fw-bold fs-3">AP</span>
+            <span class="navbar-brand mx-auto fw-bold fs-3"><img class="logo" src="./imagenWeb/logoPNG2.png" style="height: 45px;" alt=""></span>
             <button id="btn-ver-carrito" class="btn btn-outline-light position-absolute end-0 me-3" title="Ver carrito">
                 <i class="bi bi-cart3 fs-4"></i>
             </button>
@@ -31,6 +31,9 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="modalCarritoLabel">Tu pedido</h5>
+            <div class="input-group w-50 ms-3">
+              <input type="text" class="form-control" maxlength="20" id="nombreUsuario" placeholder="Como te identifico?" />
+            </div>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
           </div>
           <div class="modal-body">

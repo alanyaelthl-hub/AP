@@ -94,19 +94,23 @@ function actualizarModalCarrito() {
     const contenedor = document.getElementById('carrito-contenido');
     const btnCopiar = document.getElementById('btn-copiar-pedido');
     const checkConfirmar = document.getElementById('confirmarPedido');
+    const inputNombre = document.getElementById('nombreUsuario');
 
     // Siempre deshabilita el botón y desmarca el check al abrir el modal
     if (btnCopiar) btnCopiar.disabled = true;
     if (checkConfirmar) checkConfirmar.checked = false;
+    if (inputNombre) inputNombre.value = "";
 
     if (carrito.length === 0) {
         contenedor.innerHTML = `<div class="vacio">Aun no has agregado ningun perfume</div>`;
         if (btnCopiar) btnCopiar.disabled = true;
         if (checkConfirmar) checkConfirmar.disabled = true;
+        if (inputNombre) inputNombre.disabled = true;
         return;
     }
     if (btnCopiar) btnCopiar.disabled = true;
     if (checkConfirmar) checkConfirmar.disabled = false;
+    if (inputNombre) inputNombre.disabled = false;
 
     // Agrupar por nombre, tamaño y precio
     const agrupados = {};
@@ -144,11 +148,16 @@ function actualizarModalCarrito() {
     `;
     contenedor.innerHTML = html;
 
+    // Habilitar el botón solo si el check está marcado y el nombre no está vacío
+    function actualizarEstadoBoton() {
+        btnCopiar.disabled = !(checkConfirmar.checked && inputNombre.value.trim() !== "");
+    }
+
     // Asigna el evento cada vez que se actualiza el modal
-    if (checkConfirmar && btnCopiar) {
-        checkConfirmar.onchange = function() {
-            btnCopiar.disabled = !this.checked;
-        };
+    if (checkConfirmar && btnCopiar && inputNombre) {
+        checkConfirmar.onchange = actualizarEstadoBoton;
+        inputNombre.oninput = actualizarEstadoBoton;
+        actualizarEstadoBoton();
     }
 }
 
@@ -165,11 +174,11 @@ function generarResumenPedido() {
         }
     });
     let total = 0;
-    let resumen = "Pedido AP:\n";
+    let resumen = `Pedido de ${nombreUsuario.value}:\n`;
     Object.values(agrupados).forEach(prod => {
         const subtotal = prod.price * prod.cantidad;
         total += subtotal;
-        resumen += `${prod.name} (${prod.size}, ${prod.brand}) x${prod.cantidad}: $${subtotal} MXN\n`;
+        resumen += '▶ '+ `${prod.name} (${prod.size}, ${prod.brand}) x${prod.cantidad}: $${subtotal} MXN\n`;
     });
     resumen += `Total: $${total} MXN\n`;
     resumen += "¡Listo!, confirmo mi pedido";
