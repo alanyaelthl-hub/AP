@@ -53,6 +53,23 @@ font-family: 'Georgia', serif;
     object-fit: contain;
     background: #fff;
 }
-/* Any custom styles not covered by Bootstrap go here */
 
 
+@media (max-width: 800px) {
+  .logo {
+    height: 32px !important;
+    max-width: 90px !important;
+  }
+  .navbar .col-3,
+  .navbar .col-6 {
+    flex: 0 0 auto;
+    width: 33.3333%;
+    text-align: center;
+  }
+  .navbar .col-3:first-child {
+    justify-content: flex-start;
+  }
+  .navbar .col-3:last-child {
+    justify-content: flex-end;
+  }
+}
