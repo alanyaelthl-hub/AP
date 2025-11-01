@@ -221,12 +221,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     var dataH = [
     {
-        name: "ACQUA DI GIO POUR HOME",
+        name: "Acqua di gio pour home",
         brand: "Armani",
         image: "images/arma-acqua.png",
         prices: {
         "3ml": 32,
         "5ml": 56,
+        },
+        status: "Disponible",
+    },
+    {
+        name: "Herrera for men",
+        brand: "Carolina Herrera",
+        image: "images/herrera-for-men.png",
+        prices: {
+        "3ml": 55,
+        "5ml": 80,
         },
         status: "Disponible",
     },
@@ -247,6 +257,26 @@ document.addEventListener("DOMContentLoaded", () => {
         prices: {
         "3ml": 52,
         "5ml": 90,
+        },
+        status: "Disponible",
+    },
+    {
+        name: "Polo blue",
+        brand: "Ralph Lauren",
+        image: "images/Polo-blue.png",
+        prices: {
+        "3ml": 35,
+        "5ml": 55,
+        },
+        status: "Disponible",
+    },
+    {
+        name: "Starwalker",
+        brand: "Montblanc",
+        image: "images/starwalker.png",
+        prices: {
+        "3ml": 30,
+        "5ml": 45,
         },
         status: "Disponible",
     },
@@ -273,7 +303,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
         name: "Homme",
         brand: "Dior",
-        image: "images/dior-homme.png",
+        image: "images/dior-homme2.png",
         prices: {
         "3ml": 75,
         "5ml": 125,
