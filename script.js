@@ -263,7 +263,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
         name: "Polo blue",
         brand: "Ralph Lauren",
-        image: "images/Polo-blue.png",
+        image: "images/polo-blue.png",
         prices: {
         "3ml": 35,
         "5ml": 55,
