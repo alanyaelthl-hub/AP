@@ -221,116 +221,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     var dataH = [
     {
-        name: "Acqua di gio pour home",
-        brand: "Armani",
-        image: "images/arma-acqua.png",
-        prices: {
-        "3ml": 32,
-        "5ml": 56,
-        },
-        status: "Disponible",
-    },
-    {
-        name: "Herrera for men",
-        brand: "Carolina Herrera",
-        image: "images/herrera-for-men.png",
-        prices: {
-        "3ml": 55,
-        "5ml": 80,
-        },
-        status: "Disponible",
-    },
-    {
-        name: "YveasSaintLaurent",
-        brand: "YveasSaintLaurent",
-        image: "images/yveas-ysl.png",
-        prices: {
-        "3ml": 63,
-        "5ml": 107,
-        },
-        status: "Disponible",
-    },
-    {
-        name: "Eros",
-        brand: "Versace",
-        image: "images/versace-eros.png",
-        prices: {
-        "3ml": 52,
-        "5ml": 90,
-        },
-        status: "Disponible",
-    },
-    {
-        name: "Polo blue",
-        brand: "Ralph Lauren",
-        image: "images/polo-blue.png",
-        prices: {
-        "3ml": 35,
-        "5ml": 55,
-        },
-        status: "Disponible",
-    },
-    {
-        name: "Starwalker",
-        brand: "Montblanc",
-        image: "images/starwalker.png",
-        prices: {
-        "3ml": 30,
-        "5ml": 45,
-        },
-        status: "Disponible",
-    },
-    {
-        name: "Le beau le parfum",
-        brand: "Jean paul",
-        image: "images/jean-le-beau.png",
-        prices: {
-        "3ml": 65,
-        "5ml": 110,
-        },
-        status: "Disponible",
-    },
-    {
-        name: "Hawas",
-        brand: "Rasasi",
-        image: "images/rasasi-hawas.png",
-        prices: {
-        "3ml": 26,
-        "5ml": 45,
-        },
-        status: "Disponible",
-    },
-    {
-        name: "Homme",
-        brand: "Dior",
-        image: "images/dior-homme2.png",
-        prices: {
-        "3ml": 75,
-        "5ml": 125,
-        },
-        status: "Disponible",
-    },
-    {
-        name: "Sauvage",
-        brand: "Dior",
-        image: "images/dior-sauvage.png",
-        prices: {
-        "3ml": 115,
-        "5ml": 195,
-        },
-        status: "Disponible",
-    },
-    {
-        name: "Scandal",
-        brand: "Jean paul",
-        image: "images/jean-scandal.png",
-        prices: {
-        "3ml": 68,
-        "5ml": 115,
-        },
-        status: "Disponible",
-    },
-    {
         name: "Vip Black Men 212",
         brand: "Carolina Herrera",
         image: "images/ch-vip-black.png",
@@ -380,6 +270,157 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         status: "Disponible",
     },
+    {
+        name: "Sauvage",
+        brand: "Dior",
+        image: "images/dior-sauvage.png",
+        prices: {
+        "3ml": 115,
+        "5ml": 195,
+        },
+        status: "Disponible",
+    },
+    {
+        name: "Scandal",
+        brand: "Jean paul",
+        image: "images/jean-scandal.png",
+        prices: {
+        "3ml": 68,
+        "5ml": 115,
+        },
+        status: "Disponible",
+    },
+    {
+        name: "Eros",
+        brand: "Versace",
+        image: "images/versace-eros.png",
+        prices: {
+        "3ml": 52,
+        "5ml": 90,
+        },
+        status: "Disponible",
+    },
+    {
+        name: "YveasSaintLaurent",
+        brand: "YveasSaintLaurent",
+        image: "images/yveas-ysl.png",
+        prices: {
+        "3ml": 63,
+        "5ml": 107,
+        },
+        status: "Disponible",
+    },
+    {
+        name: "Polo blue",
+        brand: "Ralph Lauren",
+        image: "images/polo-blue.png",
+        prices: {
+        "3ml": 35,
+        "5ml": 55,
+        },
+        status: "Disponible",
+    },
+    {
+        name: "Starwalker",
+        brand: "Montblanc",
+        image: "images/starwalker.png",
+        prices: {
+        "3ml": 30,
+        "5ml": 45,
+        },
+        status: "Disponible",
+    },
+    {
+        name: "Le beau le parfum",
+        brand: "Jean paul",
+        image: "images/jean-le-beau.png",
+        prices: {
+        "3ml": 65,
+        "5ml": 110,
+        },
+        status: "Disponible",
+    },
+    {
+        name: "Homme",
+        brand: "Dior",
+        image: "images/dior-homme2.png",
+        prices: {
+        "3ml": 75,
+        "5ml": 125,
+        },
+        status: "Disponible",
+    },
+    {
+        name: "Acqua di gio pour home",
+        brand: "Armani",
+        image: "images/arma-acqua.png",
+        prices: {
+        "3ml": 32,
+        "5ml": 56,
+        },
+        status: "Disponible",
+    },
+    {
+        name: "CK One",
+        brand: "Calvin Klein",
+        image: "images/CK_ONE.jpg",
+        prices: {
+        "3ml": 25,
+        "5ml": 35,
+        },
+        status: "Disponible",
+    },
+    {
+        name: "Legend Spirit",
+        brand: "Montblanc",
+        image: "images/Legend_spirit.png",
+        prices: {
+        "3ml": 40,
+        "5ml": 65,
+        },
+        status: "Disponible",
+    },
+    {
+        name: "Vibrant Leather",
+        brand: "Zara",
+        image: "images/VIBRANT_LEATHER.jpg",
+        prices: {
+        "3ml": 25,
+        "5ml": 35,
+        },
+        status: "Disponible",
+    },
+    {
+        name: "Absolutely Dark",
+        brand: "Zara",
+        image: "images/Absolutely_dark.jpg",
+        prices: {
+        "3ml": 25,
+        "5ml": 35,
+        },
+        status: "Disponible",
+    },
+    {
+        name: "Herrera for men",
+        brand: "Carolina Herrera",
+        image: "images/herrera-for-men.png",
+        prices: {
+        "3ml": 55,
+        "5ml": 80,
+        },
+        status: "Disponible",
+    },
+    {
+        name: "Hawas",
+        brand: "Rasasi",
+        image: "images/rasasi-hawas.png",
+        prices: {
+        "3ml": 26,
+        "5ml": 45,
+        },
+        status: "Disponible",
+    },
+
     ];
 
     var dataM = [
