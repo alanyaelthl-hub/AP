@@ -420,6 +420,16 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         status: "Disponible",
     },
+    {
+        name: "Mandarin Sky",
+        brand: "Armaf",
+        image: "images/Mandarin-Sky.png",
+        prices: {
+        "3ml": 26,
+        "5ml": 45,
+        },
+        status: "Disponible",
+    },
 
     ];
 
@@ -463,5 +473,5 @@ document.addEventListener("DOMContentLoaded", () => {
         "5ml": 113,
         },
         status: "Disponible",
-    },
+    }
 ];
